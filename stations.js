@@ -31,20 +31,7 @@ const getStationsFromTraWebsite = function (url) {
 
 const getPtxStationData = function () {
   let url = 'http://ptx.transportdata.tw/MOTC/Swagger/#!/TRAApi/TRAApi_Station'
-  console.log(`🌀 Crawling PTX website: '${url}'`)
-  const nightmare = Nightmare({ show: false })
-  return nightmare
-    .goto(url)
-    .wait('#TRAApi_TRAApi_Station')
-    .evaluate(() => {
-      $(document.querySelectorAll('#TRAApi_TRAApi_Station tr input[type=text]')).val('');
-    })
-    .click('#TRAApi_TRAApi_Station input[type=submit]')
-    .wait('#TRAApi_TRAApi_Station .response_body pre')
-    .evaluate(() => {
-      return JSON.parse(document.querySelector('#TRAApi_TRAApi_Station .response_body pre').innerText);
-    })
-    .end()
+  return require('./ptx')(url, '#TRAApi_TRAApi_Station')
     .then((data) => {
       return data.reduce((acc, ele) => {
         acc[ele.StationID] = ele
