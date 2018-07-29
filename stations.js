@@ -1,4 +1,6 @@
+const path = require('path')
 const Promise = require('bluebird')
+const fs = Promise.promisifyAll(require('fs'))
 const Nightmare = require('nightmare')
 
 Nightmare.Promise = Promise
@@ -12,7 +14,7 @@ const getStationsFromTraWebsite = function (url) {
     .goto(url)
     .wait('#FromCity')
     .evaluate(() => {
-      var regions = Array.from(document.querySelectorAll('#FromCity > option')).map((e) => { return { id: e.value, name: e.innerHTML } });
+      var regions = Array.from(document.querySelectorAll('#FromCity > option')).map((e) => { return { id: e.value, name: e.innerHTML.trim() } });
       return regions.map((regionData) => {
         $('#FromCity').val(regionData.id);
         $('#FromCity').trigger('change');
@@ -47,11 +49,14 @@ const getPtxStationData = function () {
     })
 }
 
-const replaceStationData = function(originalData, detailedStationDataById) {
-  return originalData.reduce((acc, { region, stations }) => {
-    acc[region.name] = stations.map(({ id }) => { return detailedStationDataById[id] })
-    return acc
-  }, {})
+const generateAppReadyData = function(originalData, detailedStationDataById) {
+  return {
+      regions: originalData.map(({ region }) => { return region.name }),
+      stations: originalData.reduce((acc, { region, stations }) => {
+        acc[region.name] = stations.map(({ id }) => { return detailedStationDataById[id] })
+        return acc
+      }, {})
+    }
 }
 
 const promises = [
@@ -61,10 +66,25 @@ const promises = [
 ]
 Promise.all(promises)
   .then(([detailedData, zhData, enData]) => {
-    return [
-      replaceStationData(zhData, detailedData),
-      replaceStationData(enData, detailedData)
-    ]
+    return {
+      zh: generateAppReadyData(zhData, detailedData),
+      en: generateAppReadyData(enData, detailedData)
+    }
   })
-  .then(d => JSON.stringify(d, null, 2))
-  .then(console.log)
+  .then(({ zh, en }) => {
+    const outputDir = path.join(__dirname, 'output')
+
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir)
+    }
+
+    const writeActions = [
+      fs.writeFileAsync(path.join(outputDir, 'areas_zh.json'), JSON.stringify(zh.regions, null, 2)),
+      fs.writeFileAsync(path.join(outputDir, 'areas_en.json'), JSON.stringify(en.regions, null, 2)),
+      fs.writeFileAsync(path.join(outputDir, 'stations_zh.json'), JSON.stringify(zh.stations, null, 2)),
+      fs.writeFileAsync(path.join(outputDir, 'stations_en.json'), JSON.stringify(en.stations, null, 2))
+    ]
+
+    return Promise.all(writeActions)
+  })
+  .then(() => console.log('✨ Done'))
