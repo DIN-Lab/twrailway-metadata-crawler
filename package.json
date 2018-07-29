@@ -1,0 +1,11 @@
+{
+  "name": "tra-metadata-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "author": "DIN Lab",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "nightmare": "^3.0.1"
+  }
+}
