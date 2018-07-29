@@ -15,7 +15,7 @@ git clone https://$GITHUB_ACCESS_TOKEN@github.com/$GITHUB_REPO_NAME.git $REPO_PA
 
 node $DIR/../stations.js
 
-if git status --porcelain | grep .; then
+if git -C $REPO_PATH status --porcelain | grep .; then
     echo 'Data changed, will upload new data'
     git -C $REPO_PATH add -A
     git -C $REPO_PATH commit -m 'Updated metadata'
