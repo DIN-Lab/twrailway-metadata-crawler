@@ -1,3 +1,5 @@
+console.log('⚡️ Start crawling station data')
+
 const path = require('path')
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
@@ -9,6 +11,7 @@ const enTraSearchWebsiteUrl = 'http://twtraffic.tra.gov.tw/twrail/EN_QuickSearch
 const zhTraSearchWebsiteUrl = 'http://twtraffic.tra.gov.tw/twrail/TW_Quicksearch.aspx'
 
 const getStationsFromTraWebsite = function (url) {
+  console.log(`🌀 Crawling TRA website: '${url}'`)
   const nightmare = Nightmare({ show: false })
   return nightmare
     .goto(url)
@@ -28,6 +31,7 @@ const getStationsFromTraWebsite = function (url) {
 
 const getPtxStationData = function () {
   let url = 'http://ptx.transportdata.tw/MOTC/Swagger/#!/TRAApi/TRAApi_Station'
+  console.log(`🌀 Crawling PTX website: '${url}'`)
   const nightmare = Nightmare({ show: false })
   return nightmare
     .goto(url)
@@ -66,12 +70,15 @@ const promises = [
 ]
 Promise.all(promises)
   .then(([detailedData, zhData, enData]) => {
+    console.log('🌀 Done crawling')
+    console.log('🌀 Processing data')
     return {
       zh: generateAppReadyData(zhData, detailedData),
       en: generateAppReadyData(enData, detailedData)
     }
   })
   .then(({ zh, en }) => {
+    console.log('🌀 Writing data to files')
     const outputDir = path.join(__dirname, 'output')
 
     if (!fs.existsSync(outputDir)) {
