@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+git config --global user.name $GIT_USER_NAME
+git config --global user.email $GIT_USER_EMAIL
+
+DIR=$(cd "$(dirname "$0")"; pwd -P)
+
+REPO_PATH=$(echo $DIR/../output)
+
+rm -rf $REPO_PATH # remove output dir
+
+git clone https://$GITHUB_ACCESS_TOKEN@github.com/$GITHUB_REPO_NAME.git $REPO_PATH
+
+node $DIR/../stations.js
+
+if git status --porcelain | grep .; then
+    echo 'Data changed, will upload new data'
+    git -C $REPO_PATH add -A
+    git -C $REPO_PATH commit -m 'Updated metadata'
+    git -C $REPO_PATH push
+else
+    echo 'No data changed'
+fi
