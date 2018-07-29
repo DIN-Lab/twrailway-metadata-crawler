@@ -86,10 +86,10 @@ Promise.all(promises)
     }
 
     const writeActions = [
-      fs.writeFileAsync(path.join(outputDir, 'areas_zh.json'), JSON.stringify(zh.regions, null, 2)),
-      fs.writeFileAsync(path.join(outputDir, 'areas_en.json'), JSON.stringify(en.regions, null, 2)),
-      fs.writeFileAsync(path.join(outputDir, 'stations_zh.json'), JSON.stringify(zh.stations, null, 2)),
-      fs.writeFileAsync(path.join(outputDir, 'stations_en.json'), JSON.stringify(en.stations, null, 2))
+      fs.writeFileAsync(path.join(outputDir, 'areas_zh.json'), JSON.stringify(zh.regions)),
+      fs.writeFileAsync(path.join(outputDir, 'areas_en.json'), JSON.stringify(en.regions)),
+      fs.writeFileAsync(path.join(outputDir, 'stations_zh.json'), JSON.stringify(zh.stations)),
+      fs.writeFileAsync(path.join(outputDir, 'stations_en.json'), JSON.stringify(en.stations))
     ]
 
     return Promise.all(writeActions)
