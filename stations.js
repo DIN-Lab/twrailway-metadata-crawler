@@ -21,8 +21,8 @@ const getStationsFromTraWebsite = function (url) {
       return regions.map((regionData) => {
         $('#FromCity').val(regionData.id);
         $('#FromCity').trigger('change');
-        regionData.defaultStationId = $('FromCity').val()
-        const stationsInRegion = Array.from(document.querySelectorAll('#FromStation > option')).map((e) => { return { id: e.value, name: e.innerHTML } });
+        const defaultStationId = parseInt($('#FromStation').val());
+        const stationsInRegion = Array.from(document.querySelectorAll('#FromStation > option')).map((e) => { return { id: e.value, name: e.innerHTML, isDefaultStation: defaultStationId === parseInt(e.value) } });
         return { region: regionData, stations: stationsInRegion };
       });
     })
@@ -44,7 +44,7 @@ const generateAppReadyData = function(originalData, detailedStationDataById) {
   return {
       regions: originalData.map(({ region }) => { return region.name }),
       stations: originalData.reduce((acc, { region, stations }) => {
-        acc[region.name] = stations.map(({ id }) => { return detailedStationDataById[id] })
+        acc[region.name] = stations.map(({ id, isDefaultStation }) => { return {...detailedStationDataById[id], ...{ IsMainStationInArea: isDefaultStation }} })
         return acc
       }, {})
     }
