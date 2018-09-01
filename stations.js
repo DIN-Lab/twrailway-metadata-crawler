@@ -44,7 +44,14 @@ const generateAppReadyData = function(originalData, detailedStationDataById) {
   return {
       regions: originalData.map(({ region }) => { return region.name }),
       stations: originalData.reduce((acc, { region, stations }) => {
-        acc[region.name] = stations.map(({ id, isDefaultStation }) => { return {...detailedStationDataById[id], ...{ IsMainStationInArea: isDefaultStation }} })
+        acc[region.name] = stations.map(({ id, isDefaultStation }) => {
+          let data = detailedStationDataById[id]
+          if (data !== null) {
+            return {...detailedStationDataById[id], ...{ IsMainStationInArea: isDefaultStation }}
+          } else {
+            return null
+          }
+        }).filter(arg => arg !== null)
         return acc
       }, {})
     }
