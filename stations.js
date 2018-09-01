@@ -22,7 +22,21 @@ const getStationsFromTraWebsite = function (url) {
         $('#FromCity').val(regionData.id);
         $('#FromCity').trigger('change');
         const defaultStationId = parseInt($('#FromStation').val());
-        const stationsInRegion = Array.from(document.querySelectorAll('#FromStation > option')).map((e) => { return { id: e.value, name: e.innerHTML, isDefaultStation: defaultStationId === parseInt(e.value) } });
+        var appearedStation = {};
+        const stationsInRegion = Array.from(document.querySelectorAll('#FromStation > option'))
+                                      .map((e) => {
+                                        if (e.value in appearedStation) {
+                                          return null;
+                                        } else {
+                                          appearedStation[e.value] = true
+                                          return {
+                                            id: e.value,
+                                            name: e.innerHTML,
+                                            isDefaultStation: defaultStationId === parseInt(e.value)
+                                          };
+                                        }
+                                      })
+                                      .filter(e => e !== null);
         return { region: regionData, stations: stationsInRegion };
       });
     })
