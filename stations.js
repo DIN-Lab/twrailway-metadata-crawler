@@ -97,7 +97,11 @@ Promise.all(promises)
       fs.writeFileAsync(path.join(outputDir, 'areas_zh.json'), JSON.stringify(zh.regions)),
       fs.writeFileAsync(path.join(outputDir, 'areas_en.json'), JSON.stringify(en.regions)),
       fs.writeFileAsync(path.join(outputDir, 'stations_zh.json'), JSON.stringify(zh.stations)),
-      fs.writeFileAsync(path.join(outputDir, 'stations_en.json'), JSON.stringify(en.stations))
+      fs.writeFileAsync(path.join(outputDir, 'stations_en.json'), JSON.stringify(en.stations)),
+      fs.writeFileAsync(path.join(outputDir, 'areas_zh_pretty.json'), JSON.stringify(zh.regions, null, 4)),
+      fs.writeFileAsync(path.join(outputDir, 'areas_en_pretty.json'), JSON.stringify(en.regions, null, 4)),
+      fs.writeFileAsync(path.join(outputDir, 'stations_zh_pretty.json'), JSON.stringify(zh.stations, null, 4)),
+      fs.writeFileAsync(path.join(outputDir, 'stations_en_pretty.json'), JSON.stringify(en.stations, null, 4))
     ]
 
     return Promise.all(writeActions)
