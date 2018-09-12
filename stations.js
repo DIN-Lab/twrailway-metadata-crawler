@@ -47,10 +47,18 @@ const getPtxStationData = function () {
   let url = 'http://ptx.transportdata.tw/MOTC/Swagger/#!/TRAApi/TRAApi_Station'
   return require('./ptx')(url, '#TRAApi_TRAApi_Station')
     .then((data) => {
-      return data.reduce((acc, ele) => {
+      let ptxData = data.reduce((acc, ele) => {
         acc[ele.StationID] = ele
         return acc
       }, {})
+
+      let prefilledData = require('./static/prefilled_stations.json')
+      return prefilledData.reduce((acc, ele) => {
+          if (!(ele.StationID in acc)) {
+            acc[ele.StationID] = ele
+          }
+          return acc
+      }, ptxData)
     })
 }
 
