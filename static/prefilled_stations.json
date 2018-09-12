@@ -1,0 +1,121 @@
+[
+  {
+    "StationID": "1245",
+    "StationName": {
+      "Zh_tw": "內惟",
+      "En": "Neiwei"
+    },
+    "StationPosition": {
+      "PositionLat": 22.663729,
+      "PositionLon": 120.278246
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  },
+  {
+    "StationID": "1246",
+    "StationName": {
+      "Zh_tw": "美術館",
+      "En": "Museum of Fine Arts"
+    },
+    "StationPosition": {
+      "PositionLat": 22.653647,
+      "PositionLon": 120.281520
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  },
+  {
+    "StationID": "1237",
+    "StationName": {
+      "Zh_tw": "鼓山",
+      "En": "Gushan"
+    },
+    "StationPosition": {
+      "PositionLat": 22.640229,
+      "PositionLon": 120.281334
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  },
+  {
+    "StationID": "1247",
+    "StationName": {
+      "Zh_tw": "三塊厝",
+      "En": "Sankuaicuo"
+    },
+    "StationPosition": {
+      "PositionLat": 22.640066,
+      "PositionLon": 120.293921
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  },
+  {
+    "StationID": "1419",
+    "StationName": {
+      "Zh_tw": "民族",
+      "En": "Minzu"
+    },
+    "StationPosition": {
+      "PositionLat": 22.639134,
+      "PositionLon": 120.315070
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  },
+  {
+    "StationID": "1420",
+    "StationName": {
+      "Zh_tw": "科工館",
+      "En": "Science and Tecnology Museum"
+    },
+    "StationPosition": {
+      "PositionLat": 22.640519,
+      "PositionLon": 120.323784
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  },
+  {
+    "StationID": "1421",
+    "StationName": {
+      "Zh_tw": "正義",
+      "En": "Zhengyi"
+    },
+    "StationPosition": {
+      "PositionLat": 22.634333,
+      "PositionLon": 120.342000
+    },
+    "StationAddress": "Unknown",
+    "StationPhone": "Unknown",
+    "OperatorID": "TRA",
+    "StationClass": 1,
+    "ReservationCode": "000",
+    "UpdateTime": "2018-09-12T13:30:00+08:00"
+  }
+]
