@@ -4,6 +4,7 @@ const path = require('path')
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
 const Nightmare = require('nightmare')
+const _ = require('lodash')
 
 Nightmare.Promise = Promise
 
@@ -56,6 +57,8 @@ const getPtxStationData = function () {
       return prefilledData.reduce((acc, ele) => {
           if (!(ele.StationID in acc)) {
             acc[ele.StationID] = ele
+          } else {
+            acc[ele.StationID] = _.merge(ele, acc[ele.StationID])
           }
           return acc
       }, ptxData)
