@@ -54,7 +54,7 @@ const getPtxStationData = function () {
       }, {})
 
       let prefilledData = require('./static/prefilled_stations.json')
-      return prefilledData.reduce((acc, ele) => {
+      ptxData = prefilledData.reduce((acc, ele) => {
           if (!(ele.StationID in acc)) {
             acc[ele.StationID] = ele
           } else {
@@ -62,6 +62,20 @@ const getPtxStationData = function () {
           }
           return acc
       }, ptxData)
+
+      let isDataValid = function(d) {
+          return _.isObject(d) &&
+                 _.every(_(d).values().map(e => !_.isEmpty(e) || _.isFinite(e)).value(), Boolean)
+      }
+      let keys = _.keys(ptxData)
+      keys.forEach((e) => {
+        if (!isDataValid(ptxData[e])) {
+          console.log(`❌ Deleted incomplete station data: ${ptxData[e]['StationName']['Zh_tw']}`)
+          delete ptxData[e]
+        }
+      })
+
+      return ptxData
     })
 }
 
