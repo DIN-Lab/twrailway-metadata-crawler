@@ -131,4 +131,8 @@ Promise.all(promises)
 
     return Promise.all(writeActions)
   })
+  .catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })
   .then(() => console.log('✨ Done'))
