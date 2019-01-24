@@ -16,7 +16,7 @@ const getStationsFromTraWebsite = function (url) {
   const nightmare = Nightmare({ show: false })
   return nightmare
     .goto(url)
-    .wait('#FromCity')
+    .wait(() => jsonStation != undefined)
     .evaluate(() => {
       var regions = Array.from(document.querySelectorAll('#FromCity > option')).map((e) => { return { id: e.value, name: e.innerHTML.trim() } });
       return regions.map((regionData) => {
