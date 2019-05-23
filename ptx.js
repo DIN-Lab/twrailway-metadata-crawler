@@ -1,25 +1,26 @@
-const getPtxDemoData = function (url, elementSelector) {
-  console.log(`🌀 Crawling PTX website: '${url}'`)
+const axios = require('axios')
+const JsSha = require('jssha')
 
-  const Promise = require('bluebird')
-  const Nightmare = require('nightmare')
+const getAuthHeaders = function(appId, appKey) {
+  const gmtDateString = new Date().toGMTString()
+  const hasher = new JsSha('SHA-1', 'TEXT')
+	hasher.setHMACKey(appKey, 'TEXT')
+	hasher.update(`x-date: ${gmtDateString}`)
+	const hmac = hasher.getHMAC('B64')
 
-  Nightmare.Promise = Promise
+  const Authorization = `hmac username="${appId}", algorithm="hmac-sha1", headers="x-date", signature="${hmac}"`
 
-  const nightmare = Nightmare({ show: false })
-
-  return nightmare
-    .goto(url)
-    .wait(elementSelector)
-    .evaluate((elementSelector) => {
-      $(document.querySelectorAll(`${elementSelector} tr input[type=text]`)).val('');
-    }, elementSelector)
-    .click(`${elementSelector} input[type=submit]`)
-    .wait(`${elementSelector} .response_body pre`)
-    .evaluate((elementSelector) => {
-      return JSON.parse(document.querySelector(`${elementSelector} .response_body pre`).innerText);
-    }, elementSelector)
-    .end()
+	return { Authorization, 'X-Date': gmtDateString }
 }
 
-module.exports = getPtxDemoData
+const getPtxData = async function (appId, appKey) {
+  console.log('🌀 Calling PTX API')
+
+  const response = await axios.get(
+    'https://ptx.transportdata.tw/MOTC/v2/Rail/TRA/Station?$format=JSON',
+    { headers: getAuthHeaders(appId, appKey) }
+  )
+  return response.data
+}
+
+module.exports = getPtxData

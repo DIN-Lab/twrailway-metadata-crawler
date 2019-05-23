@@ -45,8 +45,9 @@ const getStationsFromTraWebsite = function (url) {
 }
 
 const getPtxStationData = function () {
-  let url = 'http://ptx.transportdata.tw/MOTC/Swagger/#!/TRAApi/TRAApi_Station'
-  return require('./ptx')(url, '#TRAApi_TRAApi_Station')
+  const appId = process.env.PTX_APP_ID
+  const appKey = process.env.PTX_APP_KEY
+  return require('./ptx')(appId, appKey)
     .then((data) => {
       let ptxData = data.reduce((acc, ele) => {
         acc[ele.StationID] = ele
