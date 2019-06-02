@@ -17,10 +17,10 @@ const getPtxData = async function (appId, appKey) {
   console.log('🌀 Calling PTX API')
 
   const response = await axios.get(
-    'https://ptx.transportdata.tw/MOTC/v2/Rail/TRA/Station?$format=JSON',
+    'https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/Station?$format=JSON',
     { headers: getAuthHeaders(appId, appKey) }
   )
-  return response.data
+  return response.data.Stations
 }
 
 module.exports = getPtxData

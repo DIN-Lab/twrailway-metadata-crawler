@@ -11,7 +11,7 @@ REPO_PATH=$(echo $DIR/../output)
 
 rm -rf $REPO_PATH # remove output dir
 
-git clone https://$GITHUB_ACCESS_TOKEN@github.com/$GITHUB_REPO_NAME.git $REPO_PATH
+git clone https://$GITHUB_ACCESS_TOKEN@github.com/$V3_GITHUB_REPO_NAME.git $REPO_PATH
 
 node $DIR/../stations.js
 
