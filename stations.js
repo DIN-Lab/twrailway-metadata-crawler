@@ -59,13 +59,15 @@ const getPtxStationData = function () {
         acc[ele.StationID] = ele
         return acc
       }, {})
-
       let prefilledData = require('./static/prefilled_stations.json')
+      const nonEmptyMerger = (objVal, srcVal) => {
+        return _.isEmpty(objVal) ? srcVal : objVal
+      }
       ptxData = prefilledData.reduce((acc, ele) => {
           if (!(ele.StationID in acc)) {
             acc[ele.StationID] = ele
           } else {
-            acc[ele.StationID] = _.merge(ele, acc[ele.StationID])
+            acc[ele.StationID] = _.mergeWith(ele, acc[ele.StationID], nonEmptyMerger)
           }
           return acc
       }, ptxData)
@@ -77,6 +79,7 @@ const getPtxStationData = function () {
       let keys = _.keys(ptxData)
       keys.forEach((e) => {
         if (!isDataValid(ptxData[e])) {
+          console.log(ptxData[e])
           console.log(`❌ Deleted incomplete station data: ${ptxData[e]['StationName']['Zh_tw']}`)
           delete ptxData[e]
         }

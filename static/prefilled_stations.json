@@ -1,189 +1,47 @@
 [
   {
-    "StationID": "1245",
-    "StationName": {
-      "Zh_tw": "內惟",
-      "En": "Neiwei"
-    },
-    "StationPosition": {
-      "PositionLat": 22.663729,
-      "PositionLon": 120.278246
-    },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
-  },
-  {
-    "StationID": "1246",
-    "StationName": {
-      "Zh_tw": "美術館",
-      "En": "Museum of Fine Arts"
-    },
-    "StationPosition": {
-      "PositionLat": 22.653647,
-      "PositionLon": 120.281520
-    },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
-  },
-  {
-    "StationID": "1237",
-    "StationName": {
-      "Zh_tw": "鼓山",
-      "En": "Gushan"
-    },
-    "StationPosition": {
-      "PositionLat": 22.640229,
-      "PositionLon": 120.281334
-    },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
-  },
-  {
-    "StationID": "1247",
-    "StationName": {
-      "Zh_tw": "三塊厝",
-      "En": "Sankuaicuo"
-    },
-    "StationPosition": {
-      "PositionLat": 22.640066,
-      "PositionLon": 120.293921
-    },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
-  },
-  {
-    "StationID": "1419",
-    "StationName": {
-      "Zh_tw": "民族",
-      "En": "Minzu"
-    },
-    "StationPosition": {
-      "PositionLat": 22.639134,
-      "PositionLon": 120.315070
-    },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
-  },
-  {
-    "StationID": "1420",
-    "StationName": {
-      "Zh_tw": "科工館",
-      "En": "Science and Tecnology Museum"
-    },
-    "StationPosition": {
-      "PositionLat": 22.640519,
-      "PositionLon": 120.323784
-    },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
-  },
-  {
-    "StationID": "1421",
+    "StationID": "4430",
     "StationName": {
       "Zh_tw": "正義",
       "En": "Zhengyi"
     },
     "StationPosition": {
-      "PositionLat": 22.634333,
-      "PositionLon": 120.342000
+      "PositionLat": 22.63425,
+      "PositionLon": 120.34245
     },
-    "StationAddress": "Unknown",
-    "StationPhone": "Unknown",
-    "OperatorID": "TRA",
-    "StationClass": 1,
-    "ReservationCode": "000",
-    "UpdateTime": "2018-09-12T13:30:00+08:00"
+    "StationAddress": "807高雄市三民區建軍里正義路 308 巷",
+    "StationPhone": "UNKNOWN",
+    "StationClass": "4",
+    "StationURL": "http://tip.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/4430"
   },
   {
-    "OperatorID": "TRA",
-    "ReservationCode": "275",
-    "StationAddress": "無",
-    "StationClass": 6,
-    "StationID": "1325",
+    "StationID": "1140",
     "StationName": {
-        "En": "Lilin",
-        "Zh_tw": "栗林"
+      "Zh_tw": "新富",
+      "En": "Xinfu"
     },
-    "StationPhone": "無",
     "StationPosition": {
-      "PositionLat": 24.1987,
-      "PositionLon": 120.7109
+      "PositionLat": 24.93107,
+      "PositionLon": 121.06759
     },
-    "UpdateTime": "2018-11-01T09:00:00+08:00"
+    "StationAddress": "32649桃園市楊梅區富豐里富全街 1 號",
+    "StationPhone": "UNKNOWN",
+    "StationClass": "5",
+    "StationURL": "http://tip.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/1140"
   },
   {
-    "OperatorID": "TRA",
-    "ReservationCode": "276",
-    "StationAddress": "無",
-    "StationClass": 6,
-    "StationID": "1326",
+    "StationID": "1001",
     "StationName": {
-        "En": "Toujiacuo",
-        "Zh_tw": "頭家厝"
+      "Zh_tw": "臺北-環島",
+      "En": "Taipei Surround Island"
     },
-    "StationPhone": "無",
     "StationPosition": {
-      "PositionLat": 24.1311,
-      "PositionLon": 120.6999
+      "PositionLat": 25.04811,
+      "PositionLon": 121.51793
     },
-    "UpdateTime": "2018-11-01T09:00:00+08:00"
-  },
-  {
-    "OperatorID": "TRA",
-    "ReservationCode": "277",
-    "StationAddress": "無",
-    "StationClass": 6,
-    "StationID": "1327",
-    "StationName": {
-        "En": "Songzhu",
-        "Zh_tw": "松竹"
-    },
-    "StationPhone": "無",
-    "StationPosition": {
-      "PositionLat": 24.1449,
-      "PositionLon": 120.7013
-    },
-    "UpdateTime": "2018-11-01T09:00:00+08:00"
-  },
-  {
-    "OperatorID": "TRA",
-    "ReservationCode": "278",
-    "StationAddress": "無",
-    "StationClass": 6,
-    "StationID": "1328",
-    "StationName": {
-        "En": "Jingwu",
-        "Zh_tw": "精武"
-    },
-    "StationPhone": "無",
-    "StationPosition": {
-      "PositionLat": 24.1135,
-      "PositionLon": 120.6972
-    },
-    "UpdateTime": "2018-11-01T09:00:00+08:00"
+    "StationAddress": "10041臺北市中正區黎明里北平西路 3 號",
+    "StationPhone": "02-23713558",
+    "StationClass": "4",
+    "StationURL": "http://tip.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/1001"
   }
 ]
